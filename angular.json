@@ -104,6 +104,11 @@
                   "maximumWarning": "6kb"
                 }
               ]
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
           }
         },
@@ -114,7 +119,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-mat-intl-tel-input-tester:build:production"
+              "browserTarget": "ngx-mat-intl-tel-input-tester:build:development"
+            },
+            "development": {
+              "browserTarget": "ngx-mat-intl-tel-input-tester:build:development"
             }
           }
         },
