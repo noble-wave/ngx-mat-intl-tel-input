@@ -1,7 +1,7 @@
 <div class="ngx-mat-tel-input-container">
   <button type="button" mat-button [matMenuTriggerFor]="menu" class="country-selector" [disabled]="disabled">
     <span class="country-selector-flag flag" [ngClass]="selectedCountry?.flagClass"></span>
-    <span class="country-selector-code" *ngIf="selectedCountry?.dialCode">+{{ selectedCountry.dialCode }}</span>
+    <span class="country-selector-code" *ngIf="selectedCountry?.dialCode">+{{ selectedCountry?.dialCode }}</span>
   </button>
   <mat-menu #menu="matMenu" class="ngx-mat-tel-input-mat-menu-panel custom-menu"
     backdropClass="ngx-mat-tel-input-overlay-backdrop" overlayPanelClass="ngx-mat-tel-input-overlay-pane">

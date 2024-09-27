@@ -113,11 +113,11 @@ export class NgxMatIntlTelInputComponent
 
   @Input() preferredCountries: Array<string> = [];
   @Input() enablePlaceholder = true;
-  @Input() inputPlaceholder: string | undefined;
+  @Input() inputPlaceholder!: string;
   @Input() cssClass: string | undefined;
   @Input() name: string | undefined;
   @Input() onlyCountries: Array<string> = [];
-  @Input() errorStateMatcher: ErrorStateMatcher = new ErrorStateMatcher();
+  @Input() override errorStateMatcher: ErrorStateMatcher = new ErrorStateMatcher();
   @Input() enableSearch = false;
   @Input() searchPlaceholder: string | undefined;
   @Input() describedBy = '';
@@ -137,7 +137,7 @@ export class NgxMatIntlTelInputComponent
   private _placeholder: string | undefined;
   private _required = false;
   private _disabled = false;
-  stateChanges = new Subject<void>();
+  override stateChanges = new Subject<void>();
   focused = false;
   @HostBinding()
   id = `ngx-mat-intl-tel-input-${NgxMatIntlTelInputComponent.nextId++}`;
@@ -169,7 +169,7 @@ export class NgxMatIntlTelInputComponent
     private countryCodeData: CountryCode,
     private fm: FocusMonitor,
     private elRef: ElementRef<HTMLElement>,
-    @Optional() @Self() public ngControl: NgControl,
+    @Optional() @Self() public override ngControl: NgControl,
     @Optional() _parentForm: NgForm,
     @Optional() _parentFormGroup: FormGroupDirective,
     _defaultErrorStateMatcher: ErrorStateMatcher
@@ -257,7 +257,7 @@ export class NgxMatIntlTelInputComponent
     this._changeDetectorRef.markForCheck();
   }
 
-  public onCountrySelect(country: Country, el: MatInput): void {
+  public onCountrySelect(country: Country, el: HTMLInputElement): void {
     if (this.phoneNumber) {
       this.phoneNumber = this.numberInstance?.nationalNumber;
     }

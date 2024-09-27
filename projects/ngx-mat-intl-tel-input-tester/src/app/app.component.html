@@ -5,7 +5,7 @@
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input matInput placeholder="Name" [formControl]="phoneForm.controls.name" />
-      <mat-error *ngIf="phoneForm.controls.name.errors?.required">
+      <mat-error *ngIf="phoneForm.controls.name.errors && phoneForm.controls.name.errors['required']">
         Required Field
       </mat-error>
     </mat-form-field>
@@ -13,7 +13,7 @@
     <mat-form-field>
       <mat-label>Surname</mat-label>
       <input matInput placeholder="surname" [formControl]="phoneForm.controls.surname" />
-      <mat-error *ngIf="phoneForm.controls.surname.errors?.required">
+      <mat-error *ngIf="phoneForm.controls.surname.errors && phoneForm.controls.surname.errors['required']">
         Required Field
       </mat-error>
     </mat-form-field>
@@ -22,12 +22,12 @@
       <ngx-mat-intl-tel-input [cssClass]="'custom'" [preferredCountries]="['us', 'ca']" [enablePlaceholder]="true"
         [formControl]="phoneForm.controls.phone" placeholder="Enter Number" describedBy="phoneInput"
         #phone></ngx-mat-intl-tel-input>
-      <mat-hint>e.g. {{ phone.selectedCountry.placeHolder }}</mat-hint>
-      <mat-error *ngIf="phoneForm.controls.phone.errors?.required">
+      <mat-hint>e.g. {{ phone.selectedCountry?.placeHolder }}</mat-hint>
+      <mat-error *ngIf="phoneForm.controls.phone.errors && phoneForm.controls.phone.errors['required']">
         Required Field
       </mat-error>
       <mat-error *ngIf="
-          f.submitted && phoneForm.controls.phone.errors?.validatePhoneNumber
+          f.submitted && phoneForm.controls.phone.errors && phoneForm.controls.phone.errors['validatePhoneNumber']
         ">
         Invalid Number
       </mat-error>
@@ -76,11 +76,11 @@
       <ngx-mat-intl-tel-input [cssClass]="'custom'" aria-label="hello" [preferredCountries]="['in', 'us']"
         [enablePlaceholder]="true" [enableSearch]="true" [searchPlaceholder]="'India...'"
         [formControl]="profileForm.controls.phone" placeholder="Enter Number" #phone1></ngx-mat-intl-tel-input>
-      <mat-hint>e.g. {{ phone1.selectedCountry.placeHolder }}</mat-hint>
-      <mat-error *ngIf="profileForm.controls.phone.errors?.required">
+      <mat-hint>e.g. {{ phone1.selectedCountry?.placeHolder }}</mat-hint>
+      <mat-error *ngIf="profileForm.controls.phone.errors && profileForm.controls.phone.errors['required']">
         Required Field
       </mat-error>
-      <mat-error *ngIf="profileForm.controls.phone.errors?.validatePhoneNumber">
+      <mat-error *ngIf="profileForm.controls.phone.errors && profileForm.controls.phone.errors['validatePhoneNumber']">
         Invalid Number
       </mat-error>
     </mat-form-field>
